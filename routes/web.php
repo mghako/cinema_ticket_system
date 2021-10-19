@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CinemaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('cinemas', [CinemaController::class, 'index'])->name('cinemas.index');
+Route::get('cinemas/create', [CinemaController::class, 'create'])->name('cinemas.create');
+Route::post('cinemas', [CinemaController::class, 'store'])->name('cinemas.store');
