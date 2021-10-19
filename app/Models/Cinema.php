@@ -16,4 +16,8 @@ class Cinema extends Model
     public function city() {
         return $this->belongsTo(City::class);
     }
+
+    public function cinemaHalls() {
+        return $this->hasMany(CinemaHall::class);
+    }
 }

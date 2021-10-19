@@ -17,10 +17,10 @@
                   City
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
+                  Total Cinema Halls
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Role
+                  Status
                 </th>
                 <th scope="col" class="relative px-6 py-3">
                   <span class="sr-only">Edit</span>
@@ -39,15 +39,15 @@
                   <div class="text-sm text-gray-900">{{$cinema->city->name}}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{$cinema->cinema_halls_count}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
                   <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                     Active
                   </span>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Admin
-                </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                  <a href="{{route('cinemas.show', $cinema->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fas fa-eye"></i> View info...</a>
                 </td>
               </tr>
               @endforeach

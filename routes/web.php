@@ -25,3 +25,4 @@ Route::get('/dashboard', function () {
 Route::get('cinemas', [CinemaController::class, 'index'])->name('cinemas.index');
 Route::get('cinemas/create', [CinemaController::class, 'create'])->name('cinemas.create');
 Route::post('cinemas', [CinemaController::class, 'store'])->name('cinemas.store');
+Route::get('cinemas/{cinema}', [CinemaController::class, 'show'])->name('cinemas.show');

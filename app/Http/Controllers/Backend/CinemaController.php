@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class CinemaController extends Controller
 {
     public function index() {
+        // dd(Cinema::withCount('cinemaHalls')->with('city')->get());
         return view('pages.cinemas.index',[
-            'cinemas' => Cinema::with('city')->get()
+            'cinemas' => Cinema::withCount('cinemaHalls')->with('city')->get()
         ]);
     }
     public function create() {
@@ -23,5 +24,10 @@ class CinemaController extends Controller
     public function store(Request $request) {
         
         ddd($request);
+    }
+    public function show(Cinema $cinema) {
+        return view('pages.cinemas.show', [
+            'cinema' => $cinema
+        ]);
     }
 }
