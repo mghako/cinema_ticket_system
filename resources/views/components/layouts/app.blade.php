@@ -23,6 +23,7 @@
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <x-forms.link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">Dashboard</x-forms.link>
                                 <x-forms.link href="{{ route('cinemas.index') }}" :active="request()->routeIs('cinemas.index')">Cinemas</x-forms.link>
+                                <x-forms.link href="{{ route('movies.index') }}" :active="request()->routeIs('movies.index')">Movies</x-forms.link>
                                 
                             </div>
                         </div>
@@ -124,10 +125,13 @@
         </nav>
     
         <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between align-middle max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold text-gray-900">
                     {{$title ?? 'Dashboard'}}
                 </h1>
+                <div>
+                    {{$addButton ?? ''}}
+                </div>
             </div>
         </header>
         <main>

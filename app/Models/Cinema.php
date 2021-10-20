@@ -10,7 +10,7 @@ class Cinema extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'cities_id'
+        'name', 'city_id'
     ];
 
     public function city() {

@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot name="title">
-      Create Cinemas List
+      Add Cinema Seat to {{ucwords($cinemaHall->name)}}
     </x-slot>
     
     <div class="flex flex-col">
@@ -12,30 +12,31 @@
           </div>
           @endif
           <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <form action="{{ route('cinemas.store') }}" method="POST">
+            <form action="{{ route('cinemas.cinema-halls.cinema-seats.store', [$cinema->id, $cinemaHall->id]) }}" method="POST">
               @csrf
               @method('POST')
               <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="city" class="block text-sm font-medium text-gray-700">Cities List</label>
-                      <select id="city" name="city_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                          <option disabled selected>select...</option>
-                        @foreach ($cities as $city)
-                          <option value="{{ $city->id }}">{{$city->name}}</option>
-                        @endforeach
-                      </select>
+                    <div class="col-span-3 sm:col-span-3">
+                      <label for="seat_type" class="block text-sm font-medium text-gray-700">
+                        Type
+                      </label>
+                      <select id="seat_type" name="type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option disabled selected>select...</option>
+                        <option value="regular">{{ucwords('regular')}}</option>
+                        <option value="premium">{{ucwords('premium')}}</option>
+                    </select>
                     </div>
                     <div class="col-span-3 sm:col-span-3">
-                      <label for="cinema-name" class="block text-sm font-medium text-gray-700">
-                        Cinema Name
+                      <label for="cinema-seat" class="block text-sm font-medium text-gray-700">
+                        Seat Number
                       </label>
                       <div class="mt-1 flex rounded-md shadow-sm">
                         <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                          Type name here
+                          Type seat number here
                         </span>
-                        <input type="text" name="name" id="cinema-name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="ABC Cinema">
+                        <input type="text" name="seat_number" id="cinema-seat" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="01">
                       </div>
                     </div>
                     

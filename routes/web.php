@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\Backend\CinemaController;
+use App\Http\Controllers\Backend\CinemaHallController;
+use App\Http\Controllers\Backend\CinemaSeatController;
+use App\Http\Controllers\Backend\MovieController;
+use App\Http\Controllers\Backend\ShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +26,25 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
+// cinema
 Route::get('cinemas', [CinemaController::class, 'index'])->name('cinemas.index');
 Route::get('cinemas/create', [CinemaController::class, 'create'])->name('cinemas.create');
 Route::post('cinemas', [CinemaController::class, 'store'])->name('cinemas.store');
 Route::get('cinemas/{cinema}', [CinemaController::class, 'show'])->name('cinemas.show');
+
+// cinema hall
+Route::get('cinemas/{cinema}/cinema-halls/create', [CinemaHallController::class, 'create'])->name('cinemas.cinema-halls.create');
+Route::get('cinemas/{cinema}/cinema-halls/{cinemaHall}', [CinemaHallController::class, 'show'])->name('cinemas.cinema-halls.show');
+Route::post('cinemas/{cinema}/cinema-halls', [CinemaHallController::class, 'store'])->name('cinemas.cinema-halls.store');
+
+// cinema seat
+Route::get('cinemas/{cinema}/cinema-halls/{cinemaHall}/cinema-seats/create', [CinemaSeatController::class, 'create'])->name('cinemas.cinema-halls.cinema-seats.create');
+Route::post('cinemas/{cinema}/cinema-halls/{cinemaHall}/cinema-seats', [CinemaSeatController::class, 'store'])->name('cinemas.cinema-halls.cinema-seats.store');
+
+// movie
+Route::get('movies', [MovieController::class, 'index'])->name('movies.index');
+Route::get('movies/{movie}', [MovieController::class, 'show'])->name('movies.show');
+
+// shows
+Route::get('moveies/{movie}/shows', [ShowController::class, 'index'])->name('movies.shows.index');

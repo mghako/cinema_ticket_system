@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class CinemaController extends Controller
 {
     public function index() {
-        // dd(Cinema::withCount('cinemaHalls')->with('city')->get());
         return view('pages.cinemas.index',[
             'cinemas' => Cinema::withCount('cinemaHalls')->with('city')->get()
         ]);
@@ -21,13 +20,14 @@ class CinemaController extends Controller
             'cities' => City::all()
         ]);
     }
-    public function store(Request $request) {
-        
-        ddd($request);
+    public function store(StoreCinemaRequest $request) {
+        $cinema = Cinema::create($request->validated());
+        return back()->with('success', $cinema->name.' Added !');
     }
     public function show(Cinema $cinema) {
         return view('pages.cinemas.show', [
-            'cinema' => $cinema
+            'cinema' => $cinema,
+            'cinemaHalls' => $cinema->cinemaHalls()->withCount('cinemaSeats')->get()
         ]);
     }
 }

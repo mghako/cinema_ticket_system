@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreCinemaRequest extends FormRequest
+class StoreCinemaHallRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,7 @@ class StoreCinemaRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:255',
-            'city_id' => ['required', Rule::exists('cities', 'id')]
+            'name' => 'required|string|min:3|max:255'
         ];
     }
 }

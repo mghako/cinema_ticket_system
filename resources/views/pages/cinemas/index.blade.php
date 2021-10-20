@@ -2,6 +2,10 @@
   <x-slot name="title">
     Cinemas List
   </x-slot>
+
+  <x-slot name="addButton">
+    <x-forms.link href="{{ route('cinemas.create') }}" active="true"><i class="fas fa-plus"></i> Add Cinema</x-forms.link>
+  </x-slot>
   
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

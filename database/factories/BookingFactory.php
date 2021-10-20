@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\City;
+use App\Models\Booking;
+use App\Models\CinemaSeat;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CityFactory extends Factory
+class BookingFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = City::class;
+    protected $model = Booking::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +23,7 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->randomElement(['Yangon', 'Mandalay'])
+            
         ];
     }
 }
