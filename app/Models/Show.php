@@ -15,4 +15,7 @@ class Show extends Model
     public function cinemaHall() {
         return $this->belongsTo(CinemaHall::class);
     }
+    public function movie() {
+        return $this->belongsTo(Movie::class);
+    }
 }
