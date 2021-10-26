@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ShowResource extends JsonResource
+class ShowSeatResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,13 +14,6 @@ class ShowResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'show_date' => $this->show_date,
-            'start_time' => $this->start_time,
-            'end_time' => $this->end_time,
-            'movie' => $this->movie->name,
-            'cinema_hall' => $this->cinemaHall->name
-        ];
+        return parent::toArray($request);
     }
 }

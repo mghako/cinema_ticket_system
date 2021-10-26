@@ -2,7 +2,9 @@
     <x-slot name="title">
       Movie Name: {{$movie->title}}
     </x-slot>
-    
+    <x-slot name="addButton">
+      <x-forms.link href="{{route('movies.shows.create', $movie->id)}}" active="true"><i class="fas fa-plus"></i> Add Show Time</x-forms.link>
+    </x-slot>
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
