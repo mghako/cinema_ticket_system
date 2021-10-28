@@ -18,4 +18,6 @@ Route::prefix('v1')->group(function() {
 
     // Show Seats
     Route::get('shows/{show}/show-seats', [ShowSeatController::class, 'index'])->name('api.v1.shows.show-seats.index');
+    Route::put('shows/{show}/show-seats/{showSeat}', [ShowSeatController::class, 'update'])->name('api.v1.shows.show-seats.update');
+
 });

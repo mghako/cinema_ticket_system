@@ -14,4 +14,12 @@ class ShowSeatController extends Controller
         // ddd(ShowSeatResource::collection(ShowSeat::whereShowId($show->id)->get()));
         return ShowSeatResource::collection(ShowSeat::whereShowId($show->id)->get());
     }
+
+    public function update(Show $show, ShowSeat $showSeat) {
+        $showSeat->status = 'busy';
+        $showSeat->push();
+        return response()->json([
+            'message' => 'Show Seat Status Changed!'
+        ]);
+    }
 }
