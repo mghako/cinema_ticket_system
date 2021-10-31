@@ -22,4 +22,8 @@ class ShowSeatController extends Controller
             'message' => 'Show Seat Status Changed!'
         ]);
     }
+
+    public function buy(Request $request) {
+        return $request;
+    }
 }
