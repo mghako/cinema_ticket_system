@@ -24,6 +24,7 @@ class ShowController extends Controller
     }
 
     public function store(ShowStoreRequest $request, Movie $movie) {
+        
         // add show to movie
         $created_show = $movie->shows()->firstOrCreate($request->validated());
         // create show seat from cinema_hall`s seat
