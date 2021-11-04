@@ -8,12 +8,13 @@ use App\Http\Resources\ShowResource;
 use App\Models\Movie;
 use App\Models\Show;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class MovieController extends Controller
 {
     public function index() {
         try {
-            return MovieResource::collection(Movie::all());
+            return MovieResource::collection(Movie::whereRelation('shows', 'show_date', Carbon::now()->toDateString())->get());
         } catch (\Throwable $th) {
             throw $th;
         }

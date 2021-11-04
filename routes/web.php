@@ -5,6 +5,9 @@ use App\Http\Controllers\Backend\CinemaHallController;
 use App\Http\Controllers\Backend\CinemaSeatController;
 use App\Http\Controllers\Backend\MovieController;
 use App\Http\Controllers\Backend\ShowController;
+use App\Models\Movie;
+use App\Models\Show;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +22,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+    return redirect()->route('dashboard');
+});
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $todayMovies = Movie::whereRelation('shows', 'show_date', Carbon::now()->toDateString())->get();
+    // $todayShows = Show::whereShowDate(Carbon::now()->toDateString())->with(['cinemaHall', 'movie'])->get();
+    
+    return view('dashboard', compact('todayMovies'));
+
 })->name('dashboard');
 
 

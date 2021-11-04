@@ -10,15 +10,17 @@ use Illuminate\Http\Request;
 class MovieController extends Controller
 {
     public function index() {
+        // dd(Movie::with('shows')->oldest()->get());
         return view('pages.movies.index', [
-            'movies' => Movie::oldest()->get()
+            'movies' => Movie::with('shows')->oldest()->get()
         ]);
     }
     public function show(Movie $movie) {
+        // dd($movie->shows()->with(['cinemaHall'])->get());
         try {
             return view('pages.movies.show', [
                 'movie' => $movie,
-                'shows' => $movie->shows()->with('cinemaHall')->get()
+                'shows' => $movie->shows()->with(['cinemaHall'])->get()
             ]);
         } catch (\Throwable $th) {
             throw $th;
