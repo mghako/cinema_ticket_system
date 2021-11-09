@@ -14,6 +14,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function() {
     // Movies
     Route::get('movies', [MovieController::class, 'index'])->name('api.v1.movies.index');
+    Route::get('movies/today', [MovieController::class, 'todayMovies'])->name('api.v1.movies.today');
     Route::get('movies/{movie}', [MovieController::class, 'show'])->name('api.v1.movies.show');
 
     // Show Seats

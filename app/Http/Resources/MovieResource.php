@@ -20,7 +20,7 @@ class MovieResource extends JsonResource
             'description' => $this->description,
             'duration' => $this->duration,
             'released_date' => $this->released_date,
-            'shows' => ShowResource::collection($this->shows)
+            'shows' => ShowResource::collection($this->showsByToday)
         ];
     }
 }

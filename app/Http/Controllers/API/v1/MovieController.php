@@ -14,7 +14,7 @@ class MovieController extends Controller
 {
     public function index() {
         try {
-            return MovieResource::collection(Movie::whereRelation('shows', 'show_date', Carbon::now()->toDateString())->get());
+            return MovieResource::collection(Movie::with('shows')->get());
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -22,5 +22,14 @@ class MovieController extends Controller
 
     public function show(Movie $movie) {
         return new MovieResource($movie);
+    }
+
+    public function todayMovies() {
+        // return Movie::has('showsByToday')->with('showsByToday')->get();
+        try {
+            return MovieResource::collection(Movie::has('showsByToday')->with('showsByToday')->get());
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
